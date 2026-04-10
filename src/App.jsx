@@ -31,7 +31,7 @@ function App() {
         onClick={() => setCount(0)}
         style={styles.resetButton}
       >
-        Resetuj
+        Zeruj
       </button>
     </div>
   );
