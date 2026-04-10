@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [clicks, setClicks] = useState(0);
 
   return (
     <div style={styles.container}>
@@ -11,7 +12,10 @@ function App() {
 
       <div style={styles.counter}>
         <button
-          onClick={() => setCount(count - 1)}
+          onClick={() => {
+            setCount(count - 1);
+            setClicks(clicks + 1);
+          }}
           style={styles.button}
         >
           ➖
@@ -20,12 +24,17 @@ function App() {
         <span style={styles.count}>{count}</span>
 
         <button
-          onClick={() => setCount(count + 1)}
+          onClick={() => {
+            setCount(count + 1);
+            setClicks(clicks + 1);
+          }}
           style={styles.button}
         >
           ➕
         </button>
       </div>
+
+      <p style={styles.clicks}>Łącznie kliknięć: {clicks}</p>
 
       <button
         onClick={() => setCount(0)}
@@ -62,6 +71,11 @@ const styles = {
     background: "rgba(255, 255, 255, 0.15)",
     borderRadius: "8px",
     opacity: 0.85,
+  },
+  clicks: {
+    fontSize: "12px",
+    marginTop: "20px",
+    opacity: 0.7,
   },
   counter: {
     display: "flex",
