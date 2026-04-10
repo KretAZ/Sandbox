@@ -7,6 +7,7 @@ function App() {
     <div style={styles.container}>
       <h1>Hello World! 🚀</h1>
       <p style={styles.subtitle}>Licznik kliknięć</p>
+      <p style={styles.info}>✨ Zmiany synchronizują się z GitHub! ✨</p>
 
       <div style={styles.counter}>
         <button
@@ -53,6 +54,14 @@ const styles = {
     fontSize: "18px",
     marginBottom: "20px",
     opacity: 0.9,
+  },
+  info: {
+    fontSize: "14px",
+    marginBottom: "20px",
+    padding: "10px 20px",
+    background: "rgba(255, 255, 255, 0.15)",
+    borderRadius: "8px",
+    opacity: 0.85,
   },
   counter: {
     display: "flex",
