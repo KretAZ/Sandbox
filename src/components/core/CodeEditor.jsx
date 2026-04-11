@@ -44,7 +44,7 @@ export function CodeEditor({
       </div>
 
       {/* Editor Container */}
-      <div className="relative rounded-lg overflow-hidden border border-white/10 glass-effect">
+      <div className="relative rounded-lg overflow-hidden border border-white/10 bg-black">
         {/* Textarea */}
         <textarea
           value={code}
