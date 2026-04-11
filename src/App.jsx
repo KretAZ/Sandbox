@@ -1,114 +1,50 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
   const [clicks, setClicks] = useState(0);
 
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h1>Hello World! 🚀</h1>
-      <p style={styles.subtitle}>Licznik kliknięć</p>
-      <p style={styles.info}>✨ Zmiany synchronizują się z GitHub! ✨</p>
+      <p className="subtitle">Licznik kliknięć</p>
+      <p className="info">✨ Zmiany synchronizują się z GitHub! ✨</p>
 
-      <div style={styles.counter}>
+      <div className="counter">
         <button
           onClick={() => {
             setCount(count - 1);
             setClicks(clicks + 1);
           }}
-          style={styles.button}
+          className="button"
         >
           ➖
         </button>
 
-        <span style={styles.count}>{count}</span>
+        <span className="count">{count}</span>
 
         <button
           onClick={() => {
             setCount(count + 1);
             setClicks(clicks + 1);
           }}
-          style={styles.button}
+          className="button"
         >
           ➕
         </button>
       </div>
 
-      <p style={styles.clicks}>Łącznie kliknięć: {clicks}</p>
+      <p className="clicks">Łącznie kliknięć: {clicks}</p>
 
       <button
         onClick={() => setCount(0)}
-        style={styles.resetButton}
+        className="resetButton"
       >
         Zeruj
       </button>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    textAlign: "center",
-    padding: "40px",
-    fontFamily: "Arial, sans-serif",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-  },
-  subtitle: {
-    fontSize: "18px",
-    marginBottom: "20px",
-    opacity: 0.9,
-  },
-  info: {
-    fontSize: "14px",
-    marginBottom: "20px",
-    padding: "10px 20px",
-    background: "rgba(255, 255, 255, 0.15)",
-    borderRadius: "8px",
-    opacity: 0.85,
-  },
-  clicks: {
-    fontSize: "12px",
-    marginTop: "20px",
-    opacity: 0.7,
-  },
-  counter: {
-    display: "flex",
-    gap: "15px",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: "30px",
-  },
-  button: {
-    fontSize: "24px",
-    padding: "10px 15px",
-    border: "none",
-    borderRadius: "8px",
-    background: "rgba(255, 255, 255, 0.2)",
-    color: "white",
-    cursor: "pointer",
-    transition: "background 0.3s",
-  },
-  count: {
-    fontSize: "48px",
-    fontWeight: "bold",
-    minWidth: "80px",
-  },
-  resetButton: {
-    padding: "10px 20px",
-    fontSize: "16px",
-    border: "2px solid white",
-    borderRadius: "8px",
-    background: "transparent",
-    color: "white",
-    cursor: "pointer",
-    transition: "all 0.3s",
-  },
-};
 
 export default App;
