@@ -7,22 +7,99 @@
   --color-secondary: #764ba2;
 }
 
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Custom utilities AFTER theme definition */
 @layer components {
-  .btn-primary {
-    @apply px-4 py-2 rounded-lg bg-primary text-white font-semibold transition-all;
+  /* Glass effect utilities */
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl;
   }
 
-  .btn-primary:hover {
-    @apply opacity-90;
+  .glass-effect-light {
+    @apply backdrop-blur-lg bg-white/80 border border-white/40 shadow-xl;
+  }
+
+  .glass-card {
+    @apply glass-effect rounded-2xl p-6 shadow-2xl shadow-primary/20 transition-all;
+  }
+
+  .glass-card:hover {
+    @apply shadow-2xl shadow-primary/40 scale-105;
+  }
+
+  .glass-button {
+    @apply glass-effect px-4 py-2 rounded-xl font-semibold transition-all cursor-pointer hover:scale-105 hover:shadow-glow;
+  }
+
+  /* Gradient utilities */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-[#667eea] via-[#764ba2] to-[#667eea];
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-r from-cyan-500 via-emerald-500 to-cyan-500;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  /* Shadow utilities */
+  .shadow-glass {
+    @apply shadow-2xl shadow-primary/30;
+  }
+
+  .shadow-glow {
+    @apply shadow-2xl shadow-primary/50;
+  }
+
+  /* Old button styles (kept for compatibility) */
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg bg-primary text-white font-semibold transition-all hover:opacity-90;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 rounded-lg bg-secondary text-white font-semibold transition-all;
-  }
-
-  .btn-secondary:hover {
-    @apply opacity-90;
+    @apply px-4 py-2 rounded-lg bg-secondary text-white font-semibold transition-all hover:opacity-90;
   }
 
   .card {
@@ -33,6 +110,8 @@
     @apply w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium focus:outline-none focus:border-primary transition-colors;
   }
 }
+
+/* Smooth transitions for theme changes */
 
 /* Smooth transitions for theme changes */
 html,
