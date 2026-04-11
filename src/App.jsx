@@ -9,7 +9,6 @@ import { APIIntegration } from "./pages/APIIntegration";
 import { CustomHooks } from "./pages/CustomHooks";
 import { ContextAPIExample } from "./pages/ContextAPIExample";
 import "./App.css";
-import "./styles/pages.css";
 
 function App() {
   return (

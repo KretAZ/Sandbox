@@ -1,18 +1,22 @@
 import { useState, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import "../styles/pages.css";
 
 // Child component - receives props from parent
 function Counter({ count, onIncrement, onDecrement, onReset }) {
   return (
-    <div className="child-component">
-      <h4>Counter Component (Child)</h4>
-      <p>Count: {count}</p>
-      <button onClick={onIncrement}>+</button>
-      <button onClick={onDecrement}>-</button>
-      <button onClick={onReset} className="reset-btn">
-        Reset
-      </button>
+    <div className="border-2 border-dashed border-primary rounded-lg p-4">
+      <h4 className="font-bold">Counter Component (Child)</h4>
+      <p className="text-lg font-bold my-2">Count: {count}</p>
+      <div className="flex gap-2">
+        <button onClick={onIncrement} className="btn-primary flex-1">+</button>
+        <button onClick={onDecrement} className="btn-primary flex-1">-</button>
+        <button
+          onClick={onReset}
+          className="flex-1 px-4 py-2 bg-gray-400 text-white rounded-lg font-semibold hover:bg-gray-500 transition-all"
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
@@ -20,9 +24,9 @@ function Counter({ count, onIncrement, onDecrement, onReset }) {
 // Another child component
 function Display({ count, name }) {
   return (
-    <div className="child-component">
-      <h4>Display Component (Child)</h4>
-      <p>
+    <div className="border-2 border-dashed border-primary rounded-lg p-4">
+      <h4 className="font-bold">Display Component (Child)</h4>
+      <p className="text-lg my-2">
         {name}, your count is: <strong>{count}</strong>
       </p>
     </div>
@@ -37,31 +41,25 @@ function ParentComponent() {
 
   return (
     <div
-      className="parent-component"
-      style={{
-        borderColor: theme.colors.border,
-        backgroundColor: theme.isDark
-          ? "rgba(102, 126, 234, 0.1)"
-          : "rgba(102, 126, 234, 0.05)",
-      }}
+      className={`border-4 rounded-lg p-6 ${
+        theme.isDark ? "border-primary bg-gray-800" : "border-primary bg-blue-50"
+      }`}
     >
-      <h3>Parent Component (State Owner)</h3>
-      <div className="parent-state">
+      <h3 className="text-xl font-bold mb-4">Parent Component (State Owner)</h3>
+      <div className={`p-4 rounded-lg mb-6 ${
+        theme.isDark ? "bg-gray-700" : "bg-blue-100"
+      }`}>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter name"
-          style={{
-            color: theme.colors.text,
-            backgroundColor: theme.isDark ? "#333" : "#f5f5f5",
-            borderColor: theme.colors.border,
-          }}
+          className="input-field mb-2"
         />
         <p>Current Count: {count}</p>
       </div>
 
-      <div className="children-container">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Counter
           count={count}
           onIncrement={() => setCount(count + 1)}
@@ -71,7 +69,7 @@ function ParentComponent() {
         <Display count={count} name={name} />
       </div>
 
-      <p className="info-text">
+      <p className="text-sm opacity-75 mt-4">
         ⬆️ Data flows DOWN (props), events flow UP (callbacks)
       </p>
     </div>
@@ -80,83 +78,99 @@ function ParentComponent() {
 
 export function PropsStateManagement() {
   const theme = useContext(ThemeContext);
-  const [selectedTab, setSelectedTab] = useState("parent-child");
 
   return (
-    <div
-      className="page-container"
-      style={{
-        backgroundColor: theme.colors.bg,
-        color: theme.colors.text,
-      }}
-    >
-      <h1>📤 Props & State Management</h1>
+    <div className={`min-h-screen transition-colors duration-300 ${
+      theme.isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+    }`}>
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <h1 className="text-5xl font-bold mb-2">📤 Props & State Management</h1>
 
-      <div className="examples-section">
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>Example: Parent-Child Communication</h2>
-          <p>
-            Data flows down as props, events flow up through callbacks
-          </p>
+        <div className="space-y-6 mb-12">
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-2">Example: Parent-Child Communication</h2>
+            <p className="opacity-75 mb-4">
+              Data flows down as props, events flow up through callbacks
+            </p>
 
-          <ParentComponent />
-        </div>
+            <ParentComponent />
+          </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>Concept: Lifting State Up</h2>
-          <p>
-            When multiple components need to share state, move state to their
-            common parent
-          </p>
-          <div className="concept-visual">
-            <div className="hierarchy">
-              <div className="node parent-node">Parent (State)</div>
-              <div className="children-nodes">
-                <div className="node child-node">Child 1</div>
-                <div className="node child-node">Child 2</div>
-                <div className="node child-node">Child 3</div>
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-2">Concept: Lifting State Up</h2>
+            <p className="opacity-75 mb-4">
+              When multiple components need to share state, move state to their common parent
+            </p>
+            <div className={`p-4 rounded-lg ${
+              theme.isDark ? "bg-gray-700" : "bg-gray-100"
+            }`}>
+              <div className="text-center mb-4">
+                <div className="inline-block px-6 py-2 bg-primary text-white rounded-lg font-bold mb-3">
+                  Parent (State)
+                </div>
+              </div>
+              <div className="flex justify-center gap-4 flex-wrap">
+                <div className="px-4 py-2 bg-secondary text-white rounded-lg font-bold">Child 1</div>
+                <div className="px-4 py-2 bg-secondary text-white rounded-lg font-bold">Child 2</div>
+                <div className="px-4 py-2 bg-secondary text-white rounded-lg font-bold">Child 3</div>
               </div>
             </div>
-            <p className="concept-text">
-              All children can access and modify state through props and
-              callbacks
+            <p className="mt-4 text-sm opacity-75">
+              All children can access and modify state through props and callbacks
             </p>
           </div>
-        </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>Concept: Props Drilling</h2>
-          <p>Passing props through many levels can become cumbersome</p>
-          <div className="concept-visual">
-            <div className="drilling-example">
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-2">Concept: Props Drilling</h2>
+            <p className="opacity-75 mb-4">Passing props through many levels can become cumbersome</p>
+            <div className={`p-4 rounded-lg space-y-2 font-mono text-sm ${
+              theme.isDark ? "bg-gray-700" : "bg-gray-100"
+            }`}>
               <div>Level 1 (has state) → passes prop</div>
-              <div style={{ marginLeft: "20px" }}>
-                Level 2 (doesn't use) → passes prop
-              </div>
-              <div style={{ marginLeft: "40px" }}>
-                Level 3 (doesn't use) → passes prop
-              </div>
-              <div style={{ marginLeft: "60px" }}>
-                Level 4 (uses prop) ✓
-              </div>
+              <div className="ml-4">Level 2 (doesn't use) → passes prop</div>
+              <div className="ml-8">Level 3 (doesn't use) → passes prop</div>
+              <div className="ml-12">Level 4 (uses prop) ✓</div>
             </div>
-            <p className="concept-text">
-              💡 Solution: Use Context API for deeply nested components
+            <p className="mt-4 text-sm opacity-75">
+              💡 <strong>Solution:</strong> Use Context API for deeply nested components
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="learning-tips">
-        <h3>📚 Key Concepts</h3>
-        <ul>
-          <li>Props flow DOWN from parent to child (read-only)</li>
-          <li>Events/callbacks flow UP from child to parent</li>
-          <li>Lift state to common parent when multiple children need it</li>
-          <li>Props drilling: passing props through unrelated components</li>
-          <li>Context API solves deep prop drilling problems</li>
-          <li>One-way data flow makes debugging easier</li>
-        </ul>
+        {/* Learning Tips */}
+        <div className={`border-l-4 border-primary p-8 rounded-lg ${
+          theme.isDark ? "bg-gray-800" : "bg-blue-50"
+        }`}>
+          <h3 className="text-2xl font-bold mb-4">📚 Key Concepts</h3>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Props flow DOWN from parent to child (read-only)</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Events/callbacks flow UP from child to parent</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Lift state to common parent when multiple children need it</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Props drilling: passing props through unrelated components</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Context API solves deep prop drilling problems</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,26 +1,20 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import "../styles/pages.css";
 
 // Example child component that uses context
 function ThemeDisplay() {
   const theme = useContext(ThemeContext);
 
   return (
-    <div
-      className="theme-display"
-      style={{
-        backgroundColor: theme.colors.bg,
-        color: theme.colors.text,
-        border: `2px solid ${theme.colors.border}`,
-        padding: "20px",
-        borderRadius: "8px",
-      }}
-    >
-      <h4>Theme Display (Child Component)</h4>
-      <p>Current theme: {theme.isDark ? "🌙 Dark" : "☀️ Light"}</p>
-      <p>Primary color: {theme.colors.primary}</p>
-      <button onClick={theme.toggleTheme}>Toggle Theme</button>
+    <div className={`border-2 border-primary rounded-lg p-6 ${
+      theme.isDark ? "bg-gray-700" : "bg-blue-50"
+    }`}>
+      <h4 className="font-bold mb-4">Theme Display (Child Component)</h4>
+      <p className="mb-2">Current theme: {theme.isDark ? "🌙 Dark" : "☀️ Light"}</p>
+      <p className="mb-4">Primary color: {theme.colors.primary}</p>
+      <button onClick={theme.toggleTheme} className="w-full btn-primary">
+        Toggle Theme
+      </button>
     </div>
   );
 }
@@ -31,16 +25,10 @@ function ColorBox() {
 
   return (
     <div
-      className="color-box"
-      style={{
-        backgroundColor: theme.colors.primary,
-        color: "white",
-        padding: "20px",
-        borderRadius: "8px",
-        marginTop: "10px",
-      }}
+      className="rounded-lg p-6 text-white"
+      style={{ backgroundColor: theme.colors.primary }}
     >
-      <p>This box uses primary color from context</p>
+      <p className="mb-2">This box uses primary color from context</p>
       <p>Theme: {theme.isDark ? "Dark" : "Light"}</p>
     </div>
   );
@@ -50,81 +38,85 @@ export function ContextAPIExample() {
   const theme = useContext(ThemeContext);
 
   return (
-    <div
-      className="page-container"
-      style={{
-        backgroundColor: theme.colors.bg,
-        color: theme.colors.text,
-      }}
-    >
-      <h1>🌍 Context API</h1>
+    <div className={`min-h-screen transition-colors duration-300 ${
+      theme.isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+    }`}>
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <h1 className="text-5xl font-bold mb-2">🌍 Context API</h1>
 
-      <div className="examples-section">
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>What is Context API?</h2>
-          <p>
-            Context provides a way to pass data through the component tree
-            without having to pass props down manually at every level
-          </p>
-          <div className="concept-visual">
-            <p>
-              <strong>Without Context (Props Drilling):</strong>
+        <div className="space-y-6 mb-12">
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-2">What is Context API?</h2>
+            <p className="opacity-75 mb-4">
+              Context provides a way to pass data through the component tree without having
+              to pass props down manually at every level
             </p>
-            <div style={{ marginLeft: "20px", fontSize: "0.9em" }}>
-              App → Provider → Page → Layout → Component → Button
-              <br />
-              (theme prop passed through every level)
-            </div>
-            <br />
-            <p>
-              <strong>With Context:</strong>
-            </p>
-            <div style={{ marginLeft: "20px", fontSize: "0.9em" }}>
-              App (Provider) → ...any component can useContext(ThemeContext)
-              <br />
-              (theme directly accessible where needed)
+            <div className={`p-4 rounded-lg space-y-4 ${
+              theme.isDark ? "bg-gray-700" : "bg-gray-100"
+            }`}>
+              <div>
+                <p className="font-bold mb-2">❌ Without Context (Props Drilling):</p>
+                <div className="font-mono text-sm opacity-75 ml-4">
+                  App → Provider → Page → Layout → Component → Button
+                  <br />
+                  (theme prop passed through every level)
+                </div>
+              </div>
+              <div>
+                <p className="font-bold mb-2">✅ With Context:</p>
+                <div className="font-mono text-sm opacity-75 ml-4">
+                  App (Provider) → ...any component can useContext(ThemeContext)
+                  <br />
+                  (theme directly accessible where needed)
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>Live Example: Theme Context</h2>
-          <p>
-            Multiple components using the same context. Click buttons to toggle
-            theme
-          </p>
-          <div className="context-examples">
-            <ThemeDisplay />
-            <ColorBox />
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-4">Live Example: Theme Context</h2>
+            <p className="opacity-75 mb-6">
+              Multiple components using the same context. Click buttons to toggle theme
+            </p>
+            <div className="space-y-4">
+              <ThemeDisplay />
+              <ColorBox />
+            </div>
+            <p className="text-sm opacity-75 mt-6">
+              ✨ Both components react to theme changes automatically, no prop drilling needed!
+            </p>
           </div>
-          <p className="info-text">
-            ✨ Both components react to theme changes automatically, no prop
-            drilling needed!
-          </p>
-        </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>How Context Works</h2>
-          <ol className="steps">
-            <li>
-              <strong>Create Context:</strong> const ThemeContext =
-              createContext()
-            </li>
-            <li>
-              <strong>Create Provider:</strong> Wraps components and provides
-              value
-            </li>
-            <li>
-              <strong>Wrap components:</strong>{" "}
-              &lt;ThemeProvider&gt;...&lt;/ThemeProvider&gt;
-            </li>
-            <li>
-              <strong>Use in components:</strong> const theme =
-              useContext(ThemeContext)
-            </li>
-          </ol>
-          <pre className="code-block">
-            {`// 1. Create context
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-4">How Context Works</h2>
+            <ol className="space-y-3 mb-6">
+              <li className="flex gap-3">
+                <span className="font-bold text-primary">1.</span>
+                <span><strong>Create Context:</strong> const ThemeContext = createContext()</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-bold text-primary">2.</span>
+                <span><strong>Create Provider:</strong> Wraps components and provides value</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-bold text-primary">3.</span>
+                <span><strong>Wrap components:</strong> &lt;ThemeProvider&gt;...&lt;/ThemeProvider&gt;</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="font-bold text-primary">4.</span>
+                <span><strong>Use in components:</strong> const theme = useContext(ThemeContext)</span>
+              </li>
+            </ol>
+            <pre className={`p-4 rounded-lg overflow-x-auto font-mono text-sm ${
+              theme.isDark ? "bg-gray-900" : "bg-gray-900 text-gray-100"
+            }`}>
+              {`// 1. Create context
 const ThemeContext = createContext();
 
 // 2. Create provider
@@ -144,55 +136,100 @@ export function ThemeProvider({ children }) {
 
 // 4. Use in any child component
 const theme = useContext(ThemeContext);`}
-          </pre>
-        </div>
+            </pre>
+          </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>When to Use Context</h2>
-          <div className="when-list">
-            <div className="good">
-              <h4>✅ Good Use Cases</h4>
-              <ul>
-                <li>Theme (dark/light mode)</li>
-                <li>User authentication state</li>
-                <li>Language/localization</li>
-                <li>UI state (modals, notifications)</li>
-                <li>Avoiding prop drilling</li>
-              </ul>
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-4">When to Use Context</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className={`p-4 rounded-lg border-l-4 border-green-500 ${
+                theme.isDark ? "bg-gray-700" : "bg-green-50"
+              }`}>
+                <h4 className="font-bold mb-2 text-green-600">✅ Good Use Cases</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>• Theme (dark/light mode)</li>
+                  <li>• User authentication state</li>
+                  <li>• Language/localization</li>
+                  <li>• UI state (modals, notifications)</li>
+                  <li>• Avoiding prop drilling</li>
+                </ul>
+              </div>
+              <div className={`p-4 rounded-lg border-l-4 border-yellow-500 ${
+                theme.isDark ? "bg-gray-700" : "bg-yellow-50"
+              }`}>
+                <h4 className="font-bold mb-2 text-yellow-600">⚠️ When to Consider Alternatives</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>• Frequently changing data (use state management library)</li>
+                  <li>• Complex state logic (Redux, Zustand)</li>
+                  <li>• Very large applications (consider Context + useReducer)</li>
+                </ul>
+              </div>
             </div>
-            <div className="caution">
-              <h4>⚠️ When to Consider Alternatives</h4>
-              <ul>
-                <li>Frequently changing data (use state management library)</li>
-                <li>Complex state logic (Redux, Zustand)</li>
-                <li>Very large applications (consider Context + useReducer)</li>
-              </ul>
-            </div>
+          </div>
+
+          <div className={`border-2 rounded-lg p-6 ${
+            theme.isDark ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-gray-50"
+          }`}>
+            <h2 className="text-2xl font-bold mb-4">Context Best Practices</h2>
+            <ul className="space-y-2">
+              <li className="flex gap-3">
+                <span className="text-primary font-bold">→</span>
+                <span>Create separate contexts for different concerns</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold">→</span>
+                <span>Use custom hooks to access context: useTheme()</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold">→</span>
+                <span>Memoize context value to prevent unnecessary re-renders</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold">→</span>
+                <span>Split Provider and Consumer logic</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold">→</span>
+                <span>Don't put too much in context (component gets slow)</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="example-box" style={{ borderColor: theme.colors.border }}>
-          <h2>Context Best Practices</h2>
-          <ul className="practices">
-            <li>Create separate contexts for different concerns</li>
-            <li>Use custom hooks to access context: useTheme()</li>
-            <li>Memoize context value to prevent unnecessary re-renders</li>
-            <li>Split Provider and Consumer logic</li>
-            <li>Don't put too much in context (component gets slow)</li>
+        {/* Learning Tips */}
+        <div className={`border-l-4 border-primary p-8 rounded-lg ${
+          theme.isDark ? "bg-gray-800" : "bg-blue-50"
+        }`}>
+          <h3 className="text-2xl font-bold mb-4">📚 Key Concepts</h3>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>createContext() creates a context object</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Provider component shares value with all descendants</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>useContext() hook accesses context value</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Components re-render when context value changes</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Avoids prop drilling through intermediate components</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-primary font-bold">✓</span>
+              <span>Perfect for global state like theme, auth, language</span>
+            </li>
           </ul>
         </div>
-      </div>
-
-      <div className="learning-tips">
-        <h3>📚 Key Concepts</h3>
-        <ul>
-          <li>createContext() creates a context object</li>
-          <li>Provider component shares value with all descendants</li>
-          <li>useContext() hook accesses context value</li>
-          <li>Components re-render when context value changes</li>
-          <li>Avoids prop drilling through intermediate components</li>
-          <li>Perfect for global state like theme, auth, language</li>
-        </ul>
       </div>
     </div>
   );

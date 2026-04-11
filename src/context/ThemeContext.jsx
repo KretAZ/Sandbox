@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 /**
  * ThemeContext demonstrates:
@@ -11,6 +11,16 @@ export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(false);
+
+  // Update HTML class when theme changes
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (isDark) {
+      htmlElement.classList.add("dark");
+    } else {
+      htmlElement.classList.remove("dark");
+    }
+  }, [isDark]);
 
   const theme = {
     isDark,
