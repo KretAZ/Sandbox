@@ -83,7 +83,7 @@ dispatch({ type, payload });`}
           </li>
           <li className="flex gap-3">
             <span className="text-primary font-bold min-w-6">✓</span>
-            <span>Reducer: (state, action) => newState function</span>
+            <span>Reducer: (state, action) → newState function</span>
           </li>
           <li className="flex gap-3">
             <span className="text-primary font-bold min-w-6">✓</span>
