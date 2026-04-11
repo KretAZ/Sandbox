@@ -20,6 +20,9 @@ import { UseRefExample } from "./pages/UseRefExample";
 import { UseReducerExample } from "./pages/UseReducerExample";
 import { ErrorBoundaryExample } from "./pages/ErrorBoundaryExample";
 import { SuspenseExample } from "./pages/SuspenseExample";
+import { ReduxExample } from "./pages/ReduxExample";
+import { ZustandExample } from "./pages/ZustandExample";
+import { ReactHookFormExample } from "./pages/ReactHookFormExample";
 import "./App.css";
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
                 <Route path="/usereducer" element={<UseReducerExample />} />
                 <Route path="/error-boundary" element={<ErrorBoundaryExample />} />
                 <Route path="/suspense" element={<SuspenseExample />} />
+                <Route path="/redux" element={<ReduxExample />} />
+                <Route path="/zustand" element={<ZustandExample />} />
+                <Route path="/react-hook-form" element={<ReactHookFormExample />} />
                 <Route path="/search" element={<SearchResultsPage />} />
                 <Route path="/quiz/:concept" element={<Quizzes />} />
                 <Route path="/quiz" element={<Quizzes />} />
