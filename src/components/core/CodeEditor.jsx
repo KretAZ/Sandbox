@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
 import { GlassButton } from "../GlassButton";
 import { CopyButton } from "./CopyButton";
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
-import "highlight.js/styles/atom-one-dark.css";
-
-hljs.registerLanguage("javascript", javascript);
 
 /**
- * Code editor component with syntax highlighting
+ * Clean code editor with line numbers
  */
 export function CodeEditor({
   code,
@@ -18,8 +13,6 @@ export function CodeEditor({
   isExecuting = false,
   language = "javascript",
 }) {
-  const highlightedCode = hljs.highlight(code, { language }).value;
-
   return (
     <motion.div
       className="space-y-4"
@@ -52,38 +45,21 @@ export function CodeEditor({
 
       {/* Editor Container */}
       <div className="relative rounded-lg overflow-hidden border border-white/10 glass-effect">
-        {/* Syntax highlighted background */}
-        <pre
-          className="absolute inset-0 p-4 text-sm font-mono overflow-hidden pointer-events-none"
-          style={{
-            color: "transparent",
-            background: "transparent",
-          }}
-        >
-          <code
-            dangerouslySetInnerHTML={{ __html: highlightedCode }}
-            style={{ color: "transparent" }}
-          />
-        </pre>
-
-        {/* Textarea overlay */}
+        {/* Textarea */}
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="relative w-full h-64 p-4 bg-transparent text-sm font-mono text-white resize-none focus:outline-none border-0 rounded-0 caret-white"
+          className="relative w-full h-64 p-4 pl-12 bg-gray-950 text-sm font-mono text-gray-100 resize-none focus:outline-none border-0 rounded-0 caret-cyan-400"
           spellCheck="false"
           style={{
-            background:
-              "linear-gradient(to right, rgba(255,255,255,0.02) 40px, transparent 40px)",
-            backgroundAttachment: "local",
-            paddingLeft: "40px",
+            paddingLeft: "48px",
           }}
         />
 
         {/* Line numbers */}
-        <div className="absolute left-0 top-0 bottom-0 w-10 bg-white/5 border-r border-white/10 p-4 text-right text-xs font-mono text-gray-500 pointer-events-none overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gray-900/50 border-r border-white/10 py-4 px-2 text-right text-xs font-mono text-gray-600 pointer-events-none overflow-hidden">
           {code.split("\n").map((_, i) => (
-            <div key={i}>{i + 1}</div>
+            <div key={i} className="h-6 leading-6">{i + 1}</div>
           ))}
         </div>
       </div>
