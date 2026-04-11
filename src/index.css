@@ -1,14 +1,16 @@
-/* Import Tailwind CSS v4 FIRST */
+/* Import Tailwind CSS v4 */
 @import "tailwindcss";
 
-/* Custom utilities AFTER Tailwind import */
+/* Custom utilities using hex colors directly */
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-opacity-90 transition-all;
+    @apply px-4 py-2 rounded-lg text-white font-semibold transition-all hover:opacity-90;
+    background-color: #667eea;
   }
 
   .btn-secondary {
-    @apply px-4 py-2 rounded-lg bg-secondary text-white font-semibold hover:bg-opacity-90 transition-all;
+    @apply px-4 py-2 rounded-lg text-white font-semibold transition-all hover:opacity-90;
+    background-color: #764ba2;
   }
 
   .card {
@@ -16,7 +18,13 @@
   }
 
   .input-field {
-    @apply w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium focus:outline-none focus:border-primary transition-colors;
+    @apply w-full px-3 py-2 border-2 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium focus:outline-none transition-colors;
+    border-color: #667eea;
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  .input-field:focus {
+    border-color: #667eea;
   }
 }
 
