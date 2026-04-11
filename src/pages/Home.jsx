@@ -48,7 +48,7 @@ export function Home() {
     <div className={`w-full min-h-screen transition-colors duration-300 ${
       theme.isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
     }`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ maxWidth: '72rem', width: '100%', paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '3rem', paddingBottom: '3rem' }}>
+      <div style={{ maxWidth: '72rem', width: '100%', padding: '3rem 1rem' }}>
         <h1 className="text-5xl font-bold text-center mb-4">
           Welcome to React Learning! 🚀
         </h1>
