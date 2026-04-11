@@ -76,7 +76,7 @@ export function CodeEditor({
             background:
               "linear-gradient(to right, rgba(255,255,255,0.02) 40px, transparent 40px)",
             backgroundAttachment: "local",
-            paddingLeft: "45px",
+            paddingLeft: "40px",
           }}
         />
 
