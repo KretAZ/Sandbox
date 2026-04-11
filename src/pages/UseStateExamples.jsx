@@ -89,7 +89,7 @@ export function UseStateExamples() {
               </button>
             </div>
             {submitted && name && (
-              <p className="mt-4 p-3 bg-green-500 bg-opacity-20 text-green-600 rounded-lg">
+              <p className="mt-4 p-3 bg-green-500/20 text-green-600 rounded-lg">
                 Hello, {name}! 👋
               </p>
             )}
@@ -108,7 +108,7 @@ export function UseStateExamples() {
               {isVisible ? "Hide" : "Show"} Content
             </button>
             {isVisible && (
-              <div className="p-4 bg-primary bg-opacity-20 text-primary rounded-lg text-center">
+              <div className="p-4 bg-primary/20 text-primary rounded-lg text-center">
                 ✨ This content can be toggled on and off!
               </div>
             )}

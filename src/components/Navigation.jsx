@@ -12,7 +12,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="text-2xl font-bold text-primary hover:text-opacity-90 transition-colors"
+          className="text-2xl font-bold text-primary hover:opacity-90 transition-colors"
         >
           🚀 React Learning
         </Link>
@@ -92,7 +92,7 @@ export function Navigation() {
 
         <button
           onClick={theme.toggleTheme}
-          className={`px-4 py-2 rounded-lg border-2 font-semibold transition-all hover:bg-opacity-10 ${
+          className={`px-4 py-2 rounded-lg border-2 font-semibold transition-all hover:opacity-10 ${
             theme.isDark
               ? "border-gray-200 text-gray-200 hover:bg-gray-200"
               : "border-gray-900 text-gray-900 hover:bg-gray-900"

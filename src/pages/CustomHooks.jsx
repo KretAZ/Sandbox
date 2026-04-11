@@ -78,7 +78,7 @@ export function CustomHooks() {
             </div>
 
             {submitted && (
-              <p className="p-3 bg-green-500 bg-opacity-20 text-green-600 rounded-lg">
+              <p className="p-3 bg-green-500/20 text-green-600 rounded-lg">
                 ✅ Message sent! Email: {email}
               </p>
             )}

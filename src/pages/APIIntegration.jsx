@@ -40,7 +40,7 @@ export function APIIntegration() {
             {loading && <p className="text-primary font-bold">⏳ Loading data...</p>}
 
             {error && (
-              <p className="p-3 bg-red-500 bg-opacity-20 text-red-600 rounded-lg mb-4">
+              <p className="p-3 bg-red-500/20 text-red-600 rounded-lg mb-4">
                 ❌ Error: {error}
               </p>
             )}
