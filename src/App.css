@@ -1,3 +1,38 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Light theme (default) */
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #000000;
+  --bg-secondary: #f5f5f5;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1a1a1a;
+    --text-primary: #ffffff;
+    --bg-secondary: #2a2a2a;
+  }
+}
+
+/* Container for old Hello World (kept for reference) */
 .container {
   text-align: center;
   padding: 40px;

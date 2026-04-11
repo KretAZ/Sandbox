@@ -1,49 +1,32 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Navigation } from "./components/Navigation";
+import { Home } from "./pages/Home";
+import { UseStateExamples } from "./pages/UseStateExamples";
+import { UseEffectExamples } from "./pages/UseEffectExamples";
+import { PropsStateManagement } from "./pages/PropsStateManagement";
+import { APIIntegration } from "./pages/APIIntegration";
+import { CustomHooks } from "./pages/CustomHooks";
+import { ContextAPIExample } from "./pages/ContextAPIExample";
 import "./App.css";
+import "./styles/pages.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [clicks, setClicks] = useState(0);
-
   return (
-    <div className="container">
-      <h1>Hello World! 🚀</h1>
-      <p className="subtitle">Licznik kliknięć</p>
-      <p className="info">✨ Zmiany synchronizują się z GitHub! ✨</p>
-
-      <div className="counter">
-        <button
-          onClick={() => {
-            setCount(count - 1);
-            setClicks(clicks + 1);
-          }}
-          className="button"
-        >
-          ➖
-        </button>
-
-        <span className="count">{count}</span>
-
-        <button
-          onClick={() => {
-            setCount(count + 1);
-            setClicks(clicks + 1);
-          }}
-          className="button"
-        >
-          ➕
-        </button>
-      </div>
-
-      <p className="clicks">Łącznie kliknięć: {clicks}</p>
-
-      <button
-        onClick={() => setCount(0)}
-        className="resetButton"
-      >
-        Zeruj
-      </button>
-    </div>
+    <ThemeProvider>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/usestate" element={<UseStateExamples />} />
+          <Route path="/useeffect" element={<UseEffectExamples />} />
+          <Route path="/props" element={<PropsStateManagement />} />
+          <Route path="/api" element={<APIIntegration />} />
+          <Route path="/custom-hooks" element={<CustomHooks />} />
+          <Route path="/context" element={<ContextAPIExample />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
