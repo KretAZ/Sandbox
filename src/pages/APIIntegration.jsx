@@ -14,8 +14,8 @@ export function APIIntegration() {
   return (
     <div className={`w-full min-h-screen transition-colors duration-300 ${
       theme.isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-    }`}>
-      <div className="max-w-6xl mx-auto px-4 py-12">
+    }`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ maxWidth: '72rem', width: '100%', padding: '3rem 1rem' }}>
         <h1 className="text-5xl font-bold mb-2">🌐 API Integration</h1>
 
         <div className="grid grid-cols-1 gap-6 mb-12">
