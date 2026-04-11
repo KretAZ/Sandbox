@@ -49,9 +49,10 @@ export function CodeEditor({
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="relative w-full h-64 p-4 pl-12 bg-black text-sm font-mono text-white resize-none focus:outline-none border-0 rounded-0 caret-cyan-400"
+          className="relative w-full h-64 p-4 pl-12 text-sm font-mono text-white resize-none focus:outline-none border-0 rounded-0 caret-cyan-400"
           spellCheck="false"
           style={{
+            backgroundColor: "#000000",
             paddingLeft: "48px",
           }}
         />
