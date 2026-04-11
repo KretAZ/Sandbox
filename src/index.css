@@ -1,8 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Tailwind CSS v4 FIRST */
+@import "tailwindcss";
 
-/* Custom utilities */
+/* Custom utilities AFTER Tailwind import */
 @layer components {
   .btn-primary {
     @apply px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-opacity-90 transition-all;
