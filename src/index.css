@@ -35,10 +35,24 @@
 }
 
 /* Smooth transitions for theme changes */
+html,
+body,
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   @apply transition-colors duration-300;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
