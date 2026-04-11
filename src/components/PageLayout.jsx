@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { LessonCheckbox } from "./progress/LessonCheckbox";
 
 export function PageLayout({
   children,
   title,
   subtitle,
   showHero = false,
+  lessonId,
+  lessonTitle,
 }) {
   const theme = useContext(ThemeContext);
 
@@ -50,6 +53,11 @@ export function PageLayout({
         >
           {children}
         </motion.div>
+
+        {/* Progress Checkpoint */}
+        {lessonId && lessonTitle && (
+          <LessonCheckbox lessonId={lessonId} lessonTitle={lessonTitle} />
+        )}
       </div>
     </div>
   );
