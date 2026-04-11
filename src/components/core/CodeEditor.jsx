@@ -49,7 +49,7 @@ export function CodeEditor({
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="relative w-full h-64 p-4 pl-12 bg-gray-950 text-sm font-mono text-gray-100 resize-none focus:outline-none border-0 rounded-0 caret-cyan-400"
+          className="relative w-full h-64 p-4 pl-12 bg-black text-sm font-mono text-white resize-none focus:outline-none border-0 rounded-0 caret-cyan-400"
           spellCheck="false"
           style={{
             paddingLeft: "48px",
@@ -57,7 +57,7 @@ export function CodeEditor({
         />
 
         {/* Line numbers */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gray-900/50 border-r border-white/10 py-4 px-2 text-right text-xs font-mono text-gray-600 pointer-events-none overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gray-900 border-r border-gray-700 py-4 px-2 text-right text-xs font-mono text-gray-400 pointer-events-none overflow-hidden">
           {code.split("\n").map((_, i) => (
             <div key={i} className="h-6 leading-6">{i + 1}</div>
           ))}
