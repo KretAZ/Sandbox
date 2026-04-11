@@ -14,6 +14,12 @@ import { ContextAPIExample } from "./pages/ContextAPIExample";
 import { SearchResultsPage } from "./pages/SearchResults";
 import { Quizzes } from "./pages/Quizzes";
 import { Challenges } from "./pages/Challenges";
+import { UseCallbackExample } from "./pages/UseCallbackExample";
+import { UseMemoExample } from "./pages/UseMemoExample";
+import { UseRefExample } from "./pages/UseRefExample";
+import { UseReducerExample } from "./pages/UseReducerExample";
+import { ErrorBoundaryExample } from "./pages/ErrorBoundaryExample";
+import { SuspenseExample } from "./pages/SuspenseExample";
 import "./App.css";
 
 function App() {
@@ -32,6 +38,12 @@ function App() {
                 <Route path="/api" element={<APIIntegration />} />
                 <Route path="/custom-hooks" element={<CustomHooks />} />
                 <Route path="/context" element={<ContextAPIExample />} />
+                <Route path="/usecallback" element={<UseCallbackExample />} />
+                <Route path="/usememo" element={<UseMemoExample />} />
+                <Route path="/useref" element={<UseRefExample />} />
+                <Route path="/usereducer" element={<UseReducerExample />} />
+                <Route path="/error-boundary" element={<ErrorBoundaryExample />} />
+                <Route path="/suspense" element={<SuspenseExample />} />
                 <Route path="/search" element={<SearchResultsPage />} />
                 <Route path="/quiz/:concept" element={<Quizzes />} />
                 <Route path="/quiz" element={<Quizzes />} />
