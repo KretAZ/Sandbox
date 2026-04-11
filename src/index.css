@@ -48,70 +48,136 @@
   }
 }
 
-/* Custom utilities AFTER theme definition */
-@layer components {
-  /* Glass effect utilities */
-  .glass-effect {
-    @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl;
-  }
-
-  .glass-effect-light {
-    @apply backdrop-blur-lg bg-white/80 border border-white/40 shadow-xl;
-  }
-
-  .glass-card {
-    @apply glass-effect rounded-2xl p-6 shadow-2xl shadow-primary/20 transition-all;
-  }
-
-  .glass-card:hover {
-    @apply shadow-2xl shadow-primary/40 scale-105;
-  }
-
-  .glass-button {
-    @apply glass-effect px-4 py-2 rounded-xl font-semibold transition-all cursor-pointer hover:scale-105 hover:shadow-glow;
-  }
-
-  /* Gradient utilities */
-  .gradient-primary {
-    @apply bg-gradient-to-r from-[#667eea] via-[#764ba2] to-[#667eea];
-  }
-
-  .gradient-accent {
-    @apply bg-gradient-to-r from-cyan-500 via-emerald-500 to-cyan-500;
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
-  }
-
-  /* Shadow utilities */
-  .shadow-glass {
-    @apply shadow-2xl shadow-primary/30;
-  }
-
-  .shadow-glow {
-    @apply shadow-2xl shadow-primary/50;
-  }
-
-  /* Old button styles (kept for compatibility) */
-  .btn-primary {
-    @apply px-4 py-2 rounded-lg bg-primary text-white font-semibold transition-all hover:opacity-90;
-  }
-
-  .btn-secondary {
-    @apply px-4 py-2 rounded-lg bg-secondary text-white font-semibold transition-all hover:opacity-90;
-  }
-
-  .card {
-    @apply border-2 border-gray-200 dark:border-gray-700 rounded-lg p-6 transition-all hover:shadow-lg;
-  }
-
-  .input-field {
-    @apply w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium focus:outline-none focus:border-primary transition-colors;
-  }
+/* Glass effect utilities - simple CSS approach */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
-/* Smooth transitions for theme changes */
+.glass-effect-light {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.4);
+  transform: scale(1.02);
+}
+
+.glass-button {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+}
+
+/* Gradient utilities */
+.gradient-primary {
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+}
+
+.gradient-accent {
+  background: linear-gradient(90deg, #06b6d4, #10b981, #06b6d4);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shadow utilities */
+.shadow-glass {
+  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.3);
+}
+
+.shadow-glow {
+  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.5);
+}
+
+/* Standard button styles */
+.btn-primary {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #667eea;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #764ba2;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.card {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: #111827;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.dark .input-field {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: white;
+}
 
 /* Smooth transitions for theme changes */
 html,
@@ -128,7 +194,7 @@ html {
 }
 
 body {
-  @apply transition-colors duration-300;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
