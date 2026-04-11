@@ -1,10 +1,14 @@
-/* Import Tailwind CSS v4 */
+/* Tailwind CSS v4 */
 @import "tailwindcss";
 
-/* Define custom colors available to Tailwind in v4 */
+/* Define custom theme values in CSS */
 @theme {
   --color-primary: #667eea;
   --color-secondary: #764ba2;
+  --color-glass: rgba(255, 255, 255, 0.1);
+  --blur-glass: 12px;
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.5);
 }
 
 /* Custom animations */
@@ -48,23 +52,25 @@
   }
 }
 
-/* Glass effect utilities - simple CSS approach */
-.glass-effect {
-  backdrop-filter: blur(12px);
+/* Tailwind v4 custom utilities */
+
+/* Glass effect utilities */
+@utility glass-effect {
+  backdrop-filter: blur(var(--blur-glass));
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: var(--shadow-glass);
 }
 
-.glass-effect-light {
-  backdrop-filter: blur(12px);
+@utility glass-effect-light {
+  backdrop-filter: blur(var(--blur-glass));
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: var(--shadow-glass);
 }
 
-.glass-card {
-  backdrop-filter: blur(12px);
+@utility glass-card {
+  backdrop-filter: blur(var(--blur-glass));
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
@@ -73,13 +79,13 @@
   transition: all 0.3s ease;
 }
 
-.glass-card:hover {
+@utility glass-card:hover {
   box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.4);
   transform: scale(1.02);
 }
 
-.glass-button {
-  backdrop-filter: blur(12px);
+@utility glass-button {
+  backdrop-filter: blur(var(--blur-glass));
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.5rem 1rem;
@@ -89,75 +95,77 @@
   cursor: pointer;
 }
 
-.glass-button:hover {
+@utility glass-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
 }
 
 /* Gradient utilities */
-.gradient-primary {
-  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+@utility gradient-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-primary));
 }
 
-.gradient-accent {
+@utility gradient-accent {
   background: linear-gradient(90deg, #06b6d4, #10b981, #06b6d4);
 }
 
-.text-gradient {
-  background: linear-gradient(90deg, #667eea, #764ba2);
+@utility text-gradient {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 /* Shadow utilities */
-.shadow-glass {
+@utility shadow-glass {
   box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.3);
 }
 
-.shadow-glow {
-  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.5);
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
 }
 
-/* Standard button styles */
-.btn-primary {
+/* Standard button utilities */
+@utility btn-primary {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: #667eea;
+  background-color: var(--color-primary);
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
+@utility btn-primary:hover {
   opacity: 0.9;
 }
 
-.btn-secondary {
+@utility btn-secondary {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: #764ba2;
+  background-color: var(--color-secondary);
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.btn-secondary:hover {
+@utility btn-secondary:hover {
   opacity: 0.9;
 }
 
-.card {
+/* Card utility */
+@utility card {
   border: 2px solid #e5e7eb;
   border-radius: 0.5rem;
   padding: 1.5rem;
   transition: all 0.3s ease;
 }
 
-.card:hover {
+@utility card:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.input-field {
+/* Input field utility */
+@utility input-field {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border: 2px solid #d1d5db;
@@ -168,9 +176,9 @@
   transition: all 0.3s ease;
 }
 
-.input-field:focus {
+@utility input-field:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--color-primary);
 }
 
 .dark .input-field {
@@ -179,7 +187,7 @@
   color: white;
 }
 
-/* Smooth transitions for theme changes */
+/* Smooth transitions and base styles */
 html,
 body,
 #root {
