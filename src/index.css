@@ -52,7 +52,7 @@
   }
 }
 
-/* Tailwind v4 custom utilities */
+/* Tailwind v4 custom utilities with proper syntax */
 
 /* Glass effect utilities */
 @utility glass-effect {
@@ -77,11 +77,11 @@
   padding: 1.5rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-}
 
-@utility glass-card:hover {
-  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.4);
-  transform: scale(1.02);
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.4);
+    transform: scale(1.02);
+  }
 }
 
 @utility glass-button {
@@ -93,11 +93,11 @@
   font-weight: 600;
   transition: all 0.2s ease;
   cursor: pointer;
-}
 
-@utility glass-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+  }
 }
 
 /* Gradient utilities */
@@ -133,10 +133,10 @@
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
-}
 
-@utility btn-primary:hover {
-  opacity: 0.9;
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 @utility btn-secondary {
@@ -146,10 +146,10 @@
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
-}
 
-@utility btn-secondary:hover {
-  opacity: 0.9;
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 /* Card utility */
@@ -158,10 +158,10 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   transition: all 0.3s ease;
-}
 
-@utility card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Input field utility */
@@ -174,11 +174,11 @@
   color: #111827;
   font-weight: 500;
   transition: all 0.3s ease;
-}
 
-@utility input-field:focus {
-  outline: none;
-  border-color: var(--color-primary);
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
 }
 
 .dark .input-field {
