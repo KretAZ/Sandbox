@@ -3,6 +3,8 @@ import { PageLayout } from "../components/PageLayout";
 import { GlassCard } from "../components/GlassCard";
 import { GlassButton } from "../components/GlassButton";
 import { SectionContainer } from "../components/SectionContainer";
+import { CodeSnippetCard } from "../components/core/CodeSnippetCard";
+import { getSnippetsForConcept } from "../data/snippets";
 
 export function UseEffectExamples() {
   // Example 1: Run on every render
@@ -215,6 +217,22 @@ export function UseEffectExamples() {
             <span>Effects run AFTER render completes</span>
           </li>
         </ul>
+      </SectionContainer>
+
+      {/* Code Snippets */}
+      <SectionContainer title="💻 Try It Out" variant="glass" delay={0.6}>
+        <div className="space-y-6">
+          {getSnippetsForConcept("useEffect").map((snippet, index) => (
+            <CodeSnippetCard
+              key={snippet.id}
+              title={snippet.title}
+              description={snippet.description}
+              initialCode={snippet.code}
+              animated
+              delay={0.05 * index}
+            />
+          ))}
+        </div>
       </SectionContainer>
     </PageLayout>
   );

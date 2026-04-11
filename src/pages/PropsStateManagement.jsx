@@ -3,6 +3,8 @@ import { PageLayout } from "../components/PageLayout";
 import { GlassCard } from "../components/GlassCard";
 import { GlassButton } from "../components/GlassButton";
 import { SectionContainer } from "../components/SectionContainer";
+import { CodeSnippetCard } from "../components/core/CodeSnippetCard";
+import { getSnippetsForConcept } from "../data/snippets";
 
 // Child component - receives props from parent
 function Counter({ count, onIncrement, onDecrement, onReset }) {
@@ -165,6 +167,22 @@ export function PropsStateManagement() {
             <span>Context API solves deep prop drilling problems</span>
           </li>
         </ul>
+      </SectionContainer>
+
+      {/* Code Snippets */}
+      <SectionContainer title="💻 Try It Out" variant="glass" delay={0.4}>
+        <div className="space-y-6">
+          {getSnippetsForConcept("props").map((snippet, index) => (
+            <CodeSnippetCard
+              key={snippet.id}
+              title={snippet.title}
+              description={snippet.description}
+              initialCode={snippet.code}
+              animated
+              delay={0.05 * index}
+            />
+          ))}
+        </div>
       </SectionContainer>
     </PageLayout>
   );

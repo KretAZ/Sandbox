@@ -3,6 +3,8 @@ import { PageLayout } from "../components/PageLayout";
 import { GlassCard } from "../components/GlassCard";
 import { GlassButton } from "../components/GlassButton";
 import { SectionContainer } from "../components/SectionContainer";
+import { CodeSnippetCard } from "../components/core/CodeSnippetCard";
+import { getSnippetsForConcept } from "../data/snippets";
 
 export function UseStateExamples() {
   // Example 1: Simple counter
@@ -174,6 +176,22 @@ export function UseStateExamples() {
             <span>Controlled components: value + onChange pattern</span>
           </li>
         </ul>
+      </SectionContainer>
+
+      {/* Code Snippets */}
+      <SectionContainer title="💻 Try It Out" variant="glass" delay={0.5}>
+        <div className="space-y-6">
+          {getSnippetsForConcept("useState").map((snippet, index) => (
+            <CodeSnippetCard
+              key={snippet.id}
+              title={snippet.title}
+              description={snippet.description}
+              initialCode={snippet.code}
+              animated
+              delay={0.05 * index}
+            />
+          ))}
+        </div>
       </SectionContainer>
     </PageLayout>
   );

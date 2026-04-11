@@ -6,6 +6,8 @@ import { SectionContainer } from "../components/SectionContainer";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useFormInput } from "../hooks/useFormInput";
 import { useFetch } from "../hooks/useFetch";
+import { CodeSnippetCard } from "../components/core/CodeSnippetCard";
+import { getSnippetsForConcept } from "../data/snippets";
 
 export function CustomHooks() {
   // Using custom hook useFormInput
@@ -222,6 +224,22 @@ export function CustomHooks() {
             <span>Perfect for forms, API calls, animations, etc.</span>
           </li>
         </ul>
+      </SectionContainer>
+
+      {/* Code Snippets */}
+      <SectionContainer title="💻 Try It Out" variant="glass" delay={0.5}>
+        <div className="space-y-6">
+          {getSnippetsForConcept("customHooks").map((snippet, index) => (
+            <CodeSnippetCard
+              key={snippet.id}
+              title={snippet.title}
+              description={snippet.description}
+              initialCode={snippet.code}
+              animated
+              delay={0.05 * index}
+            />
+          ))}
+        </div>
       </SectionContainer>
     </PageLayout>
   );
