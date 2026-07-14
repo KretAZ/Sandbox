@@ -1,0 +1,69 @@
+/* ─────────────────────────────────────────────────────────────
+   Ofertownik+ — Color tokens
+   Values transcribed exactly from the Figma source (\"Ofertownik+.fig\"),
+   then organised into a clean base + semantic scale.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ---- Brand (primary purple) ---- */
+  --brand-50:  #f2f0ff;   /* rgb(242,240,255) — tint surface */
+  --brand-100: #e6e2ff;
+  --brand-500: #4632ff;   /* rgb(70,50,255)  — PRIMARY */
+  --brand-600: #3a27e6;   /* hover */
+  --brand-700: #2f1fcc;   /* pressed */
+
+  /* ---- Navy (sidebar / headings) ---- */
+  --navy-900: #171155;    /* rgb(23,17,85)  — sidebar bg */
+  --navy-800: #141b34;    /* rgb(20,27,52)  — deep stroke */
+  --navy-700: #1a1d2e;    /* rgb(26,29,46) */
+
+  /* ---- Neutrals (warm-cool grey ramp) ---- */
+  --white:     #fffdfd;   /* rgb(255,253,253) — off-white surface */
+  --grey-50:   #f8f8fc;   /* rgb(248,248,252) */
+  --grey-100:  #f5f5f5;   /* rgb(245,245,245) — subtle bg */
+  --grey-200:  #ededed;   /* rgb(237,237,237) */
+  --grey-300:  #d5d5d5;   /* rgb(213,213,213) — border */
+  --grey-400:  #a0a3ae;   /* rgb(160,163,174) */
+  --grey-500:  #8e8e8e;   /* rgb(142,142,142) */
+  --grey-600:  #5f5f5f;   /* rgb(95,95,95) — secondary text */
+  --grey-900:  #181818;   /* rgb(24,24,24) — primary text */
+
+  /* ---- Semantic status ---- */
+  --danger-500:  #ed1c24; /* rgb(237,28,36) */
+  --danger-400:  #ef4444; /* rgb(239,68,68) */
+  --danger-50:   #fde8e9; /* rgb(253,232,233) */
+
+  --warning-500: #f59e0b; /* rgb(245,158,11) */
+  --warning-600: #f75c03; /* rgb(247,92,3) */
+  --warning-300: #f1c44f; /* rgb(241,196,79) */
+
+  --success-500: #28a15a; /* rgb(40,161,90) */
+  --success-50:  #f0fdf4; /* rgb(240,253,244) */
+
+  --info-500:    #0284c7; /* rgb(2,132,199) */
+  --info-50:     #e0f5ff; /* rgb(224,245,255) */
+  --accent-blue: #4361ee; /* rgb(67,97,238) */
+
+  /* ─── Semantic aliases ─── */
+  --color-primary:        var(--brand-500);
+  --color-primary-hover:  var(--brand-600);
+  --color-primary-active: var(--brand-700);
+  --color-primary-tint:   var(--brand-50);
+
+  --surface-page:   var(--grey-100);
+  --surface-card:   var(--white);
+  --surface-subtle: var(--grey-50);
+  --surface-sidebar: var(--navy-900);
+
+  --text-primary:   var(--grey-900);
+  --text-secondary: var(--grey-600);
+  --text-tertiary:  var(--grey-500);
+  --text-on-brand:  var(--white);
+  --text-on-sidebar: var(--white);
+
+  --border-default: var(--grey-300);
+  --border-strong:  rgba(0,0,0,0.24);
+  --border-subtle:  var(--grey-200);
+
+  --focus-ring:     var(--brand-500);
+}
